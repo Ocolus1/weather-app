@@ -10,14 +10,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'weather/logo.jpg' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'weather/styles.css' %}" />
-    <title>Weather App</title>
+    <title>Cypherspot - Weather App</title>
 </head>
 
 <body>
     <!-- Image and text -->
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{% static 'media/weather/logo_2.png' %}" width="30%" height="30%" class=" align-middle"
                 alt="logo">
             <span class="h-4 font-weight-bold text-white">What's the weather like?</span>
@@ -25,34 +26,31 @@
     </nav>
     <section class=" pt-4">
         <div class="top-form">
-            <form method="POST" class="w-50 mx-auto">
+            <form method="POST" class="d_form">
                 {% csrf_token %}
                 <div class="col-auto">
-                    <div class="input-group mb-2">
-                        {{form.name}}
-                        <div class="input-group-postpend">
-                            <div class="input-group">
-                                <input type="submit" value="Add" id="btn" class="btn btn-lg shadow text-white mybtn">
-                            </div>
-                        </div>
+                    <div class="input-group mb-3">
+                        <input type="text" name="city" class="form-control" placeholder="Enter city name.." 
+                        aria-label="City name" aria-describedby="button-addon2">
+                        <button class="btn btn-success" type="submit" id="btn1">Add</button>
                     </div>
-                    <span></span>
+                </div>
             </form>
         </div>
-        <div class="mb-5 pb-5 row">
+        <div class="mb-5 pb-5 row s_row">
             {% for city_weather in weather_data %}
-            <div class="show-div col-md-4  mt-4">
-                <div class="card-title mx-2 px-5 shadow-lg p-2 mb-2 bg-light rounded row">
+            <div class="show-div col-md-6  mt-3">
+                <div class="card-title mx-2 px-1 shadow-lg p-2 mb-2 bg-light rounded row d_row">
                     <figure class="figure col-4">
                         <img src="http://openweathermap.org/img/w/{{city_weather.icon}}.png" width="120px"
                             height="100px">
                     </figure>
-                    <div class="d-inline-block pl-5 col-8">
+                    <div class="pl-5 pt-2 col-8">
                         <h3>{{city_weather.city}}</h3>
                         <p>{{city_weather.temperature}} F</p>
                         <p>{{city_weather.description}}</p>
                         <span class="d-inline-block float-right m-0">
-                            <a href="{% url 'delete' city_weather.id %}" class="btn-danger btn btn-sm">
+                            <a href="{% url 'delete' city_weather.city %}" class="btn-danger btn btn-sm">
                                 Delete
                             </a>
                         </span>
@@ -62,7 +60,7 @@
             {% endfor %}
         </div>
     </section>
-    <footer class="bg-light fixed-bottom"></footer>
+    <footer class="fixed-bottom p-2 text-center"> &copy;Cypherspot</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

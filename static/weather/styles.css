@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+body,html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #fafafa;
+}
+
+nav {
+    background-color: #149911;
+}
+
+.mybtn {
+    background-color: #149911;
+}
+
+footer {
+    width: 100%;
+    height: 2rem;
+    margin-top: 4rem;
+    
+}
+
+@media screen and (min-width: 576px) {
+    .show-div {
+        padding: .5rem 10%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .show-div {
+        padding: .5rem 1.7rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .show-div {
+        max-width: 33.33% !important;
+        padding: .5rem .3rem;
+    }
+
+    .d_form {
+        width: 60% !important;
+        margin: auto;
+    }
+
+    .s_row {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: .5rem;
+    }
+}
